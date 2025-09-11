@@ -200,6 +200,30 @@ matplot/fast:
 	$(MAKE) $(MAKESILENT) -f matplotplusplus/source/matplot/CMakeFiles/matplot.dir/build.make matplotplusplus/source/matplot/CMakeFiles/matplot.dir/build
 .PHONY : matplot/fast
 
+featureDetection.o: featureDetection.cpp.o
+.PHONY : featureDetection.o
+
+# target to build an object file
+featureDetection.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCV_Project.dir/build.make CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.o
+.PHONY : featureDetection.cpp.o
+
+featureDetection.i: featureDetection.cpp.i
+.PHONY : featureDetection.i
+
+# target to preprocess a source file
+featureDetection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCV_Project.dir/build.make CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.i
+.PHONY : featureDetection.cpp.i
+
+featureDetection.s: featureDetection.cpp.s
+.PHONY : featureDetection.s
+
+# target to generate assembly for a file
+featureDetection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCV_Project.dir/build.make CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.s
+.PHONY : featureDetection.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -239,6 +263,9 @@ help:
 	@echo "... OpenCV_Project"
 	@echo "... matplot"
 	@echo "... nodesoup"
+	@echo "... featureDetection.o"
+	@echo "... featureDetection.i"
+	@echo "... featureDetection.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

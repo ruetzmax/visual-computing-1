@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DNOMINMAX
 
-CXX_INCLUDES = -I/home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source -I/home/max/Documents/VisualComputing/exercises/1/vc1/build/matplotplusplus/source/matplot -isystem /usr/include/opencv4
+CXX_INCLUDES = -I/home/max/Documents/VisualComputing/exercises/1/vc1 -I/home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source -I/home/max/Documents/VisualComputing/exercises/1/vc1/build/matplotplusplus/source/matplot -isystem /usr/include/opencv4
 
 CXX_FLAGS = -g
 

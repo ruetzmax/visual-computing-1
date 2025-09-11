@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/max/Documents/VisualComputing/exercises/1/vc1/featureDetection.cpp" "CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.o" "gcc" "CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.o.d"
   "/home/max/Documents/VisualComputing/exercises/1/vc1/main.cpp" "CMakeFiles/OpenCV_Project.dir/main.cpp.o" "gcc" "CMakeFiles/OpenCV_Project.dir/main.cpp.o.d"
   )
 
