@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/max/Documents/VisualComputing/exercises/1/vc1/featureDetection.cpp" "CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.o" "gcc" "CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.o.d"
   "/home/max/Documents/VisualComputing/exercises/1/vc1/main.cpp" "CMakeFiles/OpenCV_Project.dir/main.cpp.o" "gcc" "CMakeFiles/OpenCV_Project.dir/main.cpp.o.d"
+  "/home/max/Documents/VisualComputing/exercises/1/vc1/warping.cpp" "CMakeFiles/OpenCV_Project.dir/warping.cpp.o" "gcc" "CMakeFiles/OpenCV_Project.dir/warping.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

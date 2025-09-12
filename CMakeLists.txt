@@ -18,7 +18,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 add_subdirectory(matplotplusplus)
 
 # Define the executable target and its source files.
-add_executable(${PROJECT_NAME} main.cpp featureDetection.cpp)
+add_executable(${PROJECT_NAME} main.cpp featureDetection.cpp warping.cpp)
 
 # Link the executable against the required OpenCV libraries.
 target_link_libraries(${PROJECT_NAME} PUBLIC matplot ${OpenCV_LIBS} )

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.o.d"
   "CMakeFiles/OpenCV_Project.dir/main.cpp.o"
   "CMakeFiles/OpenCV_Project.dir/main.cpp.o.d"
+  "CMakeFiles/OpenCV_Project.dir/warping.cpp.o"
+  "CMakeFiles/OpenCV_Project.dir/warping.cpp.o.d"
   "OpenCV_Project"
   "OpenCV_Project.pdb"
 )

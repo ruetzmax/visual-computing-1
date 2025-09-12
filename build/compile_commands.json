@@ -12,6 +12,12 @@
   "output": "CMakeFiles/OpenCV_Project.dir/featureDetection.cpp.o"
 },
 {
+  "directory": "/home/max/Documents/VisualComputing/exercises/1/vc1/build",
+  "command": "/usr/bin/g++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DNOMINMAX -I/home/max/Documents/VisualComputing/exercises/1/vc1 -I/home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source -I/home/max/Documents/VisualComputing/exercises/1/vc1/build/matplotplusplus/source/matplot -isystem /usr/include/opencv4 -g -o CMakeFiles/OpenCV_Project.dir/warping.cpp.o -c /home/max/Documents/VisualComputing/exercises/1/vc1/warping.cpp",
+  "file": "/home/max/Documents/VisualComputing/exercises/1/vc1/warping.cpp",
+  "output": "CMakeFiles/OpenCV_Project.dir/warping.cpp.o"
+},
+{
   "directory": "/home/max/Documents/VisualComputing/exercises/1/vc1/build/matplotplusplus/source/3rd_party",
   "command": "/usr/bin/g++ -D_USE_MATH_DEFINES -I/usr/include/opencv4 -I/home/max/Documents/VisualComputing/exercises/1/vc1 -I/home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source/3rd_party/nodesoup/include -g -fvisibility=hidden -o CMakeFiles/nodesoup.dir/nodesoup/src/algebra.cpp.o -c /home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source/3rd_party/nodesoup/src/algebra.cpp",
   "file": "/home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source/3rd_party/nodesoup/src/algebra.cpp",

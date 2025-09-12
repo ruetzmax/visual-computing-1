@@ -409,4 +409,5 @@ CMakeFiles/OpenCV_Project.dir/main.cpp.o: \
  /home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source/matplot/freestanding/axes_lim.h \
  /home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source/matplot/freestanding/histcounts.h \
  /home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source/matplot/freestanding/plot.h \
- /home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source/matplot/core/figure_registry.h
+ /home/max/Documents/VisualComputing/exercises/1/vc1/matplotplusplus/source/matplot/core/figure_registry.h \
+ /home/max/Documents/VisualComputing/exercises/1/vc1/warping.h

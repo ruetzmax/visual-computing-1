@@ -248,6 +248,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCV_Project.dir/build.make CMakeFiles/OpenCV_Project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+warping.o: warping.cpp.o
+.PHONY : warping.o
+
+# target to build an object file
+warping.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCV_Project.dir/build.make CMakeFiles/OpenCV_Project.dir/warping.cpp.o
+.PHONY : warping.cpp.o
+
+warping.i: warping.cpp.i
+.PHONY : warping.i
+
+# target to preprocess a source file
+warping.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCV_Project.dir/build.make CMakeFiles/OpenCV_Project.dir/warping.cpp.i
+.PHONY : warping.cpp.i
+
+warping.s: warping.cpp.s
+.PHONY : warping.s
+
+# target to generate assembly for a file
+warping.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCV_Project.dir/build.make CMakeFiles/OpenCV_Project.dir/warping.cpp.s
+.PHONY : warping.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -269,6 +293,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... warping.o"
+	@echo "... warping.i"
+	@echo "... warping.s"
 .PHONY : help
 
 
