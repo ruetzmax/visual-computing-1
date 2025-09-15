@@ -42,22 +42,22 @@ int main()
     
     // Save images with keypoints drawn
     cv::imwrite("../outputs/image1_1_keypoints.jpg", features1_1.imageWithKeypoints);
-    cv::imwrite("../outputs/image2_1_keypoints.jpg", features1_2.imageWithKeypoints);
+    cv::imwrite("../outputs/image1_2_keypoints.jpg", features1_2.imageWithKeypoints);
 
-    cv::imwrite("../outputs/image1_2_keypoints.jpg", features2_1.imageWithKeypoints);
+    cv::imwrite("../outputs/image2_1_keypoints.jpg", features2_1.imageWithKeypoints);
     cv::imwrite("../outputs/image2_2_keypoints.jpg", features2_2.imageWithKeypoints);
 
-    cv::imwrite("../outputs/image1_3_keypoints.jpg", features3_1.imageWithKeypoints);
-    cv::imwrite("../outputs/image2_3_keypoints.jpg", features3_2.imageWithKeypoints);
+    cv::imwrite("../outputs/image3_1_keypoints.jpg", features3_1.imageWithKeypoints);
+    cv::imwrite("../outputs/image3_2_keypoints.jpg", features3_2.imageWithKeypoints);
 
     cv::imwrite("../outputs/image1_1_keypoints_orb.jpg", features1_1_orb.imageWithKeypoints);
-    cv::imwrite("../outputs/image2_1_keypoints_orb.jpg", features1_2_orb.imageWithKeypoints);
+    cv::imwrite("../outputs/image1_2_keypoints_orb.jpg", features1_2_orb.imageWithKeypoints);
 
-    cv::imwrite("../outputs/image1_2_keypoints_orb.jpg", features2_1_orb.imageWithKeypoints);
+    cv::imwrite("../outputs/image2_1_keypoints_orb.jpg", features2_1_orb.imageWithKeypoints);
     cv::imwrite("../outputs/image2_2_keypoints_orb.jpg", features2_2_orb.imageWithKeypoints);
 
-    cv::imwrite("../outputs/image1_3_keypoints_orb.jpg", features3_1_orb.imageWithKeypoints);
-    cv::imwrite("../outputs/image2_3_keypoints_orb.jpg", features3_2_orb.imageWithKeypoints);
+    cv::imwrite("../outputs/image3_1_keypoints_orb.jpg", features3_1_orb.imageWithKeypoints);
+    cv::imwrite("../outputs/image3_2_keypoints_orb.jpg", features3_2_orb.imageWithKeypoints);
 
     // Plot bar chart of #keypoint per image (pair) by extraction method
     double numKeypoints1 = features1_1.keypoints.size() + features1_2.keypoints.size();
@@ -76,13 +76,13 @@ int main()
     matplot::save("../plots/num_keypoints.jpg");
 
     // Match features using BFMatcher
-    FeatureMatches matches1 = match_features(features1_1, features1_2);
-    FeatureMatches matches2 = match_features(features2_1, features2_2);
-    FeatureMatches matches3 = match_features(features3_1, features3_2);
+    FeatureMatches matches1 = match_features(features1_2, features1_1);
+    FeatureMatches matches2 = match_features(features2_2, features2_1);
+    FeatureMatches matches3 = match_features(features3_2, features3_1);
 
-    FeatureMatches matches1_orb = match_features(features1_1_orb, features1_2_orb);
-    FeatureMatches matches2_orb = match_features(features2_1_orb, features2_2_orb);
-    FeatureMatches matches3_orb = match_features(features3_1_orb, features3_2_orb);
+    FeatureMatches matches1_orb = match_features(features1_2_orb, features1_1_orb);
+    FeatureMatches matches2_orb = match_features(features2_2_orb, features2_1_orb);
+    FeatureMatches matches3_orb = match_features(features3_2_orb, features3_1_orb);
 
     // Plot bar chart of matching time per image (pair) by extraction method
     std::vector<std::vector<double>> matchingTimeByMethod = {{matches1.matchingTimeMs, matches1_orb.matchingTimeMs}, {matches2.matchingTimeMs, matches2_orb.matchingTimeMs}, {matches3.matchingTimeMs, matches3_orb.matchingTimeMs}};
@@ -120,45 +120,105 @@ int main()
     //TODO: fix bin sizes
 
     // Estimate homography for each image pair, with varying reprojection thresholds
-    HomographyEstimation homography1_3 = estimateHomography(features1_1.keypoints, features1_2.keypoints, matches1, 3.0);
-    HomographyEstimation homography2_3 = estimateHomography(features2_1.keypoints, features2_2.keypoints, matches2, 3.0);
-    HomographyEstimation homography3_3 = estimateHomography(features3_1.keypoints, features3_2.keypoints, matches3, 3.0);
+    HomographyEstimation homography1_1 = estimateHomography(features1_2.keypoints, features1_1.keypoints, matches1, 1.0);
+    HomographyEstimation homography2_1 = estimateHomography(features2_2.keypoints, features2_1.keypoints, matches2, 1.0);
+    HomographyEstimation homography3_1 = estimateHomography(features3_2.keypoints, features3_1.keypoints, matches3, 1.0);
 
-    HomographyEstimation homography1_5 = estimateHomography(features1_1.keypoints, features1_2.keypoints, matches1, 5.0);
-    HomographyEstimation homography2_5 = estimateHomography(features2_1.keypoints, features2_2.keypoints, matches2, 5.0);
-    HomographyEstimation homography3_5 = estimateHomography(features3_1.keypoints, features3_2.keypoints, matches3, 5.0);
+    HomographyEstimation homography1_5 = estimateHomography(features1_2.keypoints, features1_1.keypoints, matches1, 5.0);
+    HomographyEstimation homography2_5 = estimateHomography(features2_2.keypoints, features2_1.keypoints, matches2, 5.0);
+    HomographyEstimation homography3_5 = estimateHomography(features3_2.keypoints, features3_1.keypoints, matches3, 5.0);
 
-    HomographyEstimation homography1_10 = estimateHomography(features1_1.keypoints, features1_2.keypoints, matches1, 10.0);
-    HomographyEstimation homography2_10 = estimateHomography(features2_1.keypoints, features2_2.keypoints, matches2, 10.0);
-    HomographyEstimation homography3_10 = estimateHomography(features3_1.keypoints, features3_2.keypoints, matches3, 10.0);
+    HomographyEstimation homography1_10 = estimateHomography(features1_2.keypoints, features1_1.keypoints, matches1, 10.0);
+    HomographyEstimation homography2_10 = estimateHomography(features2_2.keypoints, features2_1.keypoints, matches2, 10.0);
+    HomographyEstimation homography3_10 = estimateHomography(features3_2.keypoints, features3_1.keypoints, matches3, 10.0);
 
     // Plot bar char of numbers of inliers by reprojection threshold for each image pair for each threshold
-    std::vector<std::vector<int>> numInliersByThreshold = {{homography1_3.numInliers, homography1_5.numInliers, homography1_10.numInliers}, 
-                                                            {homography2_3.numInliers, homography2_5.numInliers, homography2_10.numInliers}, 
-                                                            {homography3_3.numInliers, homography3_5.numInliers, homography3_10.numInliers}};
+    std::vector<std::vector<int>> numInliersByThreshold = {{homography1_1.numInliers, homography1_5.numInliers, homography1_10.numInliers}, 
+                                                            {homography2_1.numInliers, homography2_5.numInliers, homography2_10.numInliers}, 
+                                                            {homography3_1.numInliers, homography3_5.numInliers, homography3_10.numInliers}};
     matplot::figure();
     matplot::bar(numInliersByThreshold);
     matplot::ylabel("# Inliers");
     matplot::xlabel("Reprojection Threshold");
-    matplot::gca()->x_axis().ticklabels({"3.0", "5.0", "10.0"});
+    matplot::gca()->x_axis().ticklabels({"1.0", "5.0", "10.0"});
     matplot::title("Number of Inliers by Reprojection Threshold");
     matplot::save("../plots/num_inliers.jpg");
 
     // Plot bar chart of estimation time by reprojection threshold for each image pair for each threshold
-    std::vector<std::vector<double>> estimationTimeByThreshold = {{homography1_3.estimationTimeMs, homography1_5.estimationTimeMs, homography1_10.estimationTimeMs}, 
-                                                                  {homography2_3.estimationTimeMs, homography2_5.estimationTimeMs, homography2_10.estimationTimeMs}, 
-                                                                  {homography3_3.estimationTimeMs, homography3_5.estimationTimeMs, homography3_10.estimationTimeMs}};
+    std::vector<std::vector<double>> estimationTimeByThreshold = {{homography1_1.estimationTimeMs, homography1_5.estimationTimeMs, homography1_10.estimationTimeMs}, 
+                                                                  {homography2_1.estimationTimeMs, homography2_5.estimationTimeMs, homography2_10.estimationTimeMs}, 
+                                                                  {homography3_1.estimationTimeMs, homography3_5.estimationTimeMs, homography3_10.estimationTimeMs}};
     matplot::figure();
     matplot::bar(estimationTimeByThreshold);
     matplot::ylabel("Estimation Time (ms)");
     matplot::xlabel("Reprojection Threshold");
-    matplot::gca()->x_axis().ticklabels({"3.0", "5.0", "10.0"});
+    matplot::gca()->x_axis().ticklabels({"1.0", "5.0", "10.0"});
     matplot::title("Homography Estimation Time by Reprojection Threshold");
     matplot::save("../plots/estimation_time.jpg");
 
+    // Export stitched images for each threshold
+    cv::Mat stitched1_1 = stitchImages(image1_1, image1_2, homography1_1.H);
+    cv::Mat stitched2_1 = stitchImages(image2_1, image2_2, homography2_1.H);
+    cv::Mat stitched3_1 = stitchImages(image3_1, image3_2, homography3_1.H);
 
-    //TODO: stitch quality by threshold
+    cv::Mat stitched1_5 = stitchImages(image1_1, image1_2, homography1_5.H);
+    cv::Mat stitched2_5 = stitchImages(image2_1, image2_2, homography2_5.H);
+    cv::Mat stitched3_5 = stitchImages(image3_1, image3_2, homography3_5.H);
+
+    cv::Mat stitched1_10 = stitchImages(image1_1, image1_2, homography1_10.H);
+    cv::Mat stitched2_10 = stitchImages(image2_1, image2_2, homography2_10.H);
+    cv::Mat stitched3_10 = stitchImages(image3_1, image3_2, homography3_10.H);
+
+    cv::imwrite("../outputs/stitched1_sift_threshold1.jpg", stitched1_1);
+    cv::imwrite("../outputs/stitched2_sift_threshold1.jpg", stitched2_1);
+    cv::imwrite("../outputs/stitched3_sift_threshold1.jpg", stitched3_1);
+
+    cv::imwrite("../outputs/stitched1_sift_threshold5.jpg", stitched1_5);
+    cv::imwrite("../outputs/stitched2_sift_threshold5.jpg", stitched2_5);
+    cv::imwrite("../outputs/stitched3_sift_threshold5.jpg", stitched3_5);
+
+    cv::imwrite("../outputs/stitched1_sift_threshold10.jpg", stitched1_10);
+    cv::imwrite("../outputs/stitched2_sift_threshold10.jpg", stitched2_10);
+    cv::imwrite("../outputs/stitched3_sift_threshold10.jpg", stitched3_10);
+
+    // Export one sample for stiching using ORB features
+    HomographyEstimation homography1_1_orb = estimateHomography(features1_2_orb.keypoints, features1_1_orb.keypoints, matches1_orb, 1.0);
+    HomographyEstimation homography2_1_orb = estimateHomography(features2_2_orb.keypoints, features2_1_orb.keypoints, matches2_orb, 1.0);
+    HomographyEstimation homography3_1_orb = estimateHomography(features3_2_orb.keypoints, features3_1_orb.keypoints, matches3_orb, 1.0);
+
+    cv::Mat stitched1_1_orb = stitchImages(image1_1, image1_2, homography1_1_orb.H);
+    cv::Mat stitched2_1_orb = stitchImages(image2_1, image2_2, homography2_1_orb.H);
+    cv::Mat stitched3_1_orb = stitchImages(image3_1, image3_2, homography3_1_orb.H);
+
+    cv::imwrite("../outputs/stitched1_orb_threshold1.jpg", stitched1_1_orb);
+    cv::imwrite("../outputs/stitched2_orb_threshold1.jpg", stitched2_1_orb);
+    cv::imwrite("../outputs/stitched3_orb_threshold1.jpg", stitched3_1_orb);
+
     //TODO: stitch quality by stitching method
+
+
+    // Plot alignment error by sift vs. orb (constant threshold)
+    std::vector<std::vector<float>> alignmentErrorByMethod = {{homography1_1.alignmentError, homography1_1_orb.alignmentError}, 
+                                                              {homography2_1.alignmentError, homography2_1_orb.alignmentError}, 
+                                                              {homography3_1.alignmentError, homography3_1_orb.alignmentError}};
+    matplot::figure();
+    matplot::bar(alignmentErrorByMethod);
+    matplot::ylabel("Average Alignment Error");
+    matplot::xlabel("Feature Extraction Method");
+    matplot::gca()->x_axis().ticklabels({"SIFT", "ORB"});
+    matplot::title("Alignment Error by Feature Extraction Method (Reprojection Threshold=1.0)");
+    matplot::save("../plots/method_alignment_error.jpg");
+ 
+
+    // Plot alignment error by threshold (for SIFT)
+    std::vector<float> alignmentErrorByThreshold = {homography1_1.alignmentError, homography1_5.alignmentError, homography1_10.alignmentError};
+    matplot::figure();
+    matplot::bar(alignmentErrorByThreshold);
+    matplot::ylabel("Average Alignment Error");
+    matplot::xlabel("Reprojection Threshold");
+    matplot::gca()->x_axis().ticklabels({"1.0", "5.0", "10.0"});
+    matplot::title("Alignment Error by Reprojection Threshold (Feature Extraction Method=SIFT)");
+    matplot::save("../plots/threshold_alignment_error.jpg");
 
     return 0;
 }
