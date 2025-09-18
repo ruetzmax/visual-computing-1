@@ -15,16 +15,6 @@ cv::Mat load_image(const std::string &path)
         throw std::runtime_error("Could not open or find the image!");
     }
 
-    int screenWidth = 1920;
-    int screenHeight = 1080;
-
-    double scale = std::min(
-        (double)screenWidth / image.cols,
-        (double)screenHeight / image.rows
-    );
-;
-    cv::resize(image, image, cv::Size(), scale, scale);
-
     return image;
 }
 
