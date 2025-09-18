@@ -117,7 +117,6 @@ int main()
     matplot::ylabel("Frequency");
     matplot::title("Histogram of Match Distances by Extraction Method (Normalized)");
     matplot::save("../plots/match_distances.jpg");
-    //TODO: fix bin sizes
 
     // Estimate homography for each image pair, with varying reprojection thresholds
     HomographyEstimation homography1_1 = estimateHomography(features1_2.keypoints, features1_1.keypoints, matches1, 1.0);
@@ -194,8 +193,22 @@ int main()
     cv::imwrite("../outputs/stitched2_orb_threshold1.jpg", stitched2_1_orb);
     cv::imwrite("../outputs/stitched3_orb_threshold1.jpg", stitched3_1_orb);
 
-    //TODO: stitch quality by stitching method
+    // Export sample stitched images using feathering
+    cv::Mat stitched1_1_feathered = stitchImages(image1_1, image1_2, homography1_1.H, StitchingMethod::FEATHERING);
+    cv::Mat stiched2_1_feathered = stitchImages(image2_1, image2_2, homography2_1.H, StitchingMethod::FEATHERING);
+    cv::Mat stitched3_1_feathered = stitchImages(image3_1, image3_2, homography3_1.H, StitchingMethod::FEATHERING);
 
+    cv::Mat stiched_1_5_feathered = stitchImages(image1_1, image1_2, homography1_5.H, StitchingMethod::FEATHERING);
+    cv::Mat stiched_2_5_feathered = stitchImages(image2_1, image2_2, homography2_5.H, StitchingMethod::FEATHERING);
+    cv::Mat stiched_3_5_feathered = stitchImages(image3_1, image3_2, homography3_5.H, StitchingMethod::FEATHERING);
+
+    cv::imwrite("../outputs/stitched1_sift_threshold1_feathered.jpg", stitched1_1_feathered);
+    cv::imwrite("../outputs/stitched2_sift_threshold1_feathered.jpg", stiched2_1_feathered);
+    cv::imwrite("../outputs/stitched3_sift_threshold1_feathered.jpg", stitched3_1_feathered);
+
+    cv::imwrite("../outputs/stitched1_sift_threshold5_feathered.jpg", stiched_1_5_feathered);
+    cv::imwrite("../outputs/stitched2_sift_threshold5_feathered.jpg", stiched_2_5_feathered);
+    cv::imwrite("../outputs/stitched3_sift_threshold5_feathered.jpg", stiched_3_5_feathered);
 
     // Plot alignment error by sift vs. orb (constant threshold)
     std::vector<std::vector<float>> alignmentErrorByMethod = {{homography1_1.alignmentError, homography1_1_orb.alignmentError}, 
